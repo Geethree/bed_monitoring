@@ -2,6 +2,14 @@
 version: '2.2'
 
 services:
+
+  facility_a_prometheus:
+    image: prom/prometheus:v2.17.1
+    ports:
+      - "19090:9090"
+    volumes:
+    - "./configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"
+
   bed:
     build:
       dockerfile: configs/bed/Dockerfile

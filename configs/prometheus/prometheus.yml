@@ -1,0 +1,29 @@
+# my global config
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'facility_beds'
+    relabel_configs:
+      - source_labels: [__address__]
+        regex:         '.*(bed_[0-9]+):.*'
+        target_label:  'instance'
+        replacement:   '${1}'
+    static_configs:
+      - targets: [
+        'bed_monitoring_bed_1:8000',
+        'bed_monitoring_bed_2:8000',
+        'bed_monitoring_bed_3:8000',
+        'bed_monitoring_bed_4:8000',
+        'bed_monitoring_bed_5:8000',
+        'bed_monitoring_bed_6:8000',
+        'bed_monitoring_bed_7:8000',
+        'bed_monitoring_bed_8:8000',
+        'bed_monitoring_bed_9:8000',
+        'bed_monitoring_bed_10:8000',
+      ]

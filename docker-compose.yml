@@ -1,0 +1,10 @@
+---
+version: '2.2'
+
+services:
+  bed:
+    build:
+      dockerfile: configs/bed/Dockerfile
+      context: .
+    volumes:
+    - "./configs/bed/monitor.py:/monitor.py"

@@ -1,0 +1,15 @@
+apiVersion: 1
+
+deleteDatasources:
+  - name: Facility
+    orgId: 1
+
+datasources:
+  - name: Facility
+    type: prometheus
+    access: proxy
+    orgId: 1
+    url: http://facility_a_prometheus:9090
+    basicAuth: false
+    isDefault: true
+    editable: false

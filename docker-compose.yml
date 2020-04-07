@@ -2,17 +2,24 @@
 version: '2.2'
 
 services:
+  grafana:
+    image: grafana/grafana:6.7.2-ubuntu
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./configs/grafana:/etc/grafana"
 
   facility_a_prometheus:
     image: prom/prometheus:v2.17.1
     ports:
       - "19090:9090"
     volumes:
-    - "./configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"
+      - "./configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"
 
   bed:
     build:
       dockerfile: configs/bed/Dockerfile
       context: .
+    scale: 10
     volumes:
-    - "./configs/bed/monitor.py:/monitor.py"
+      - "./configs/bed/monitor.py:/monitor.py"

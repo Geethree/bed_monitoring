@@ -1,3 +1,5 @@
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/Geethree/bed_monitoring) 
+
 # Monitor Beds
 
 Quick POC to use prometheus+grafana to monitor 10 mock beds
